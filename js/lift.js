@@ -8,11 +8,23 @@ const liftContainer = document.createElement("div");
 //on Submit button add values
 submitButton.addEventListener("click", () => {
   console.log("click");
+
+  // Check if lift should not be greater than 4
+  if (LiftInput.value > 4) {
+    alert("Max lift exceeded");
+  }
+
+
   // for loop to generate the floors
   for (let i = floorInput.value; i > 0; i--) {
     //Function to genereate floors
     createFloors(i, LiftInput.value);
   }
+
+
+  //remove the values after submitting
+  LiftInput.value = '';
+  floorInput.value = '';
 });
 
 // Function To Create Floors
@@ -48,11 +60,12 @@ function createFloors(floors, lifts) {
 
   //   console.log(floorContainer, 'floors')
 
-  container.prepend(floorContainer);
+  container.append(floorContainer);
 
   //Logic to generate Lifts
 
   for (let j = 0; j < lifts; j++) {
+    //Check all lifts should be on 1st
     if (floors === 1) {
       let Lifts = document.createElement("div");
 
@@ -101,15 +114,12 @@ document.addEventListener("click", (e) => {
 function LiftStatus(clickedFloor) {
   let LiftArr = Array.from(document.getElementsByClassName("lift-div"));
 
-
   for (let i = 0; i < LiftArr.length; i++) {
     if (!LiftArr[i].classList.contains("engaged")) {
-
-      console.log('lift started', 'go up');
+      console.log("lift started", "go up");
       MoveLift(clickedFloor, LiftArr[i]);
 
       return;
-
     }
   }
 }
@@ -131,5 +141,3 @@ function MoveLift(clickedFloor, move) {
     move.classList.remove("engaged");
   }, timing * 1000 + 7000);
 }
-
-
