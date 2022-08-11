@@ -4,8 +4,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #000;
 }
 
+
+.topic {
+
+    margin: 0;
+    text-align: center;
+    color : #FF6263;
+    margin-bottom: 0.7em;
+}
 
 .input__container {
 
@@ -14,13 +23,38 @@
      margin: 0 auto;
      justify-content: center;
      align-items: center;
+     border: 0.5px solid #FF6263;
+     width: 20rem;
+     height: auto;
+     padding: 1em;
+     border-radius: 6px;
 }
 
+#submit-btn {
+
+     border-radius: 6px;
+     padding: 0.75em 1em;
+     color: #fff;
+     background-color: #FF6263;
+     cursor: pointer;
+     width: 100%;
+} 
+
+input {
+
+   width: 100%;
+   padding: 0.5em;
+   border: 0.5px solid #FF6263;
+   outline: none;
+   margin: 0.5em;
+   color: #fff;
+   border-radius: 4px;
+}
+ 
 #container {
 
       padding: 2.5em;
       margin-top: 20px;
-      border: 1px solid red;
       position: relative;
    
 }

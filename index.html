@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lift Simulation</title>
     <link rel="stylesheet" href="./css/styles.css"></link>
+    <script src="./js/lift.js" defer></script>
 </head>
 <body>
 
-
+     
+    <h1 class="topic">Lift Simulation Task</h1>
 
     <div class="input__container">
-        <input type='number' id="floor-input" />
-        <input type='number' id="lift-input" />
+        <input type='number' id="floor-input" placeholder="Enter the number of floors" min="0"/>
+        <input type='number' id="lift-input" placeholder="Enter the number of lifts" min="0"/>
         <button type="submit" id="submit-btn">Submit</button>   
     </div>
 
@@ -24,6 +26,6 @@
     </div>
     
 
-    <script src="./js/lift.js"></script>
+ 
 </body>
 </html>
