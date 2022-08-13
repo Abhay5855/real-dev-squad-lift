@@ -54,29 +54,52 @@ input {
 #container {
 
       padding: 2.5em;
-      margin-top: 20px;
-      position: relative;
+      /* margin-top: 2em; */
+      
    
+}
+
+.up-down {
+
+    color : #fff;
+    background: #FF6263;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0.2em;
 }
 .floor {
 
       
       width: 100%;
-      height: 35vh;
       display: flex;
-      margin-bottom: 20px;
-      border: 1px solid black;
+      height: 30vh;
+      flex-direction: column;
+      /* margin-bottom: 1em; */
+      justify-content: space-between;
+      border: 1px solid #FF6263;
+}
+
+.btn-div {
+
+  /* display : flex;
+  border: 1px solid red; */
+  /* flex-direction: column;
+  justify-content: space-between; */
+  /* height: 100vh; */
 }
 
 .lift-div {
-
-    background-color: bisque;
-    width: 200px;
-    height: 200px;
-    
-    border: 1px solid black;
+    width: 150px;
+    height: 150px;
     margin-left: 2em;
+    border: 0.5px solid red;
+    z-index: 1;
+    background-color: white;
     display: flex;
+    
    
 }
 
@@ -84,26 +107,56 @@ input {
 
   display: flex;
   margin-left: 6em;
-  position: absolute;
-  bottom:  65px;
+  
 
- 
 }
 
 .left-door {
 
-  background: green;
-  border-right: 2px solid black;
-  width: 100px;
-  height: 200px;
+  background: #FF6263;
+  width: 50%;
+  height: 100%;
+  border: 0.5px solid #fff;
+  transition: transform 2s linear;
+  z-index: 2;
 
+}
+
+.left-open {
+  transform: translateX(-20%);
+}
+
+.right-open {
+  transform: translateX(20%);
 }
 
 .right-door {
 
-    background: red;
-    border-left: 2px solid black;
-    width: 100px;
-    height: 200px;
+    background: #FF6263;
+    border: 0.5px solid #fff;
+    width: 50%;
+    height: 100%;
+    transition: transform 2s linear;
+    z-index: 2;
+  
 
+}
+
+@media (max-width : 400px) {
+
+
+  .input__container {
+
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #FF6263;
+    width: 15rem;
+    height: auto;
+    padding: 0.75em;
+    
+}
+  
 }

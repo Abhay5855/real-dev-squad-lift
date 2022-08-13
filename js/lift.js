@@ -86,11 +86,15 @@ function createFloors(floors, lifts) {
 
       liftContainer.classList.add("lift");
 
+      // buttonContainer.append(liftContainer);
+
       Lifts.setAttribute("pos", j);
 
       Lifts.setAttribute("onFloor", 0);
 
-      container.append(liftContainer);
+      // container.append(liftContainer);
+
+      floorContainer.append(liftContainer);
 
       console.log(Lifts, "these are the Lifts");
     }
@@ -137,7 +141,20 @@ function MoveLift(clickedFloor, move) {
   move.classList.add("engaged");
   move.dataset.currentlocation = clickedFloor;
 
+  
+   //Opening the lift doors
+   setTimeout(() => {
+    move.children[0].classList.add("left-open"); 
+    move.children[1].classList.add("right-open");
+  }, timing * 1000);
+
+  setTimeout(() => {
+    move.children[0].classList.remove("left-open");
+    move.children[1].classList.remove("right-open");
+  }, timing * 1000 + 3000);
+
+  //  Remove the bust status 
   setTimeout(() => {
     move.classList.remove("engaged");
-  }, timing * 1000 + 7000);
+  }, timing * 1000 + 5000);
 }
