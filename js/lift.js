@@ -5,25 +5,15 @@ const submitButton = document.getElementById("submit-btn");
 const container = document.getElementById("container");
 const liftContainer = document.createElement("div");
 
-floorInput.addEventListener("input", () => {
-  if (floorInput.value === "") {
-    document.getElementById("submit-btn").setAttribute("disabled", true);
-  } 
-});
 
-LiftInput.addEventListener("input", () => {
-  if (LiftInput.value === "") {
-    document.getElementById("submit-btn").setAttribute("disabled", true);
-  } 
-});
 
-// if(floorInput.value == ''){
+if(floorInput.value === '' || LiftInput.value === ''){
 
-//       document.getElementById('submit-btn').setAttribute('disabled' , true);
-// }else {
+      document.getElementById('submit-btn').setAttribute('disabled' , true);
+}else {
 
-//   document.getElementById('submit-btn').removeAttribute('disabled');
-// }
+  document.getElementById('submit-btn').removeAttribute('disabled')
+}
 
 //on Submit button add values
 submitButton.addEventListener("click", () => {
