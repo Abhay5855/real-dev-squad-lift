@@ -44,7 +44,7 @@
 #submit-btn:disabled {
 
       cursor: not-allowed;
-      opacity: 4;
+      opacity: 0.5;
 
 }
 
