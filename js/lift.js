@@ -5,22 +5,33 @@ const submitButton = document.getElementById("submit-btn");
 const container = document.getElementById("container");
 const liftContainer = document.createElement("div");
 
+floorInput.addEventListener("input", () => {
+  if (floorInput.value === "") {
+    document.getElementById("submit-btn").setAttribute("disabled", true);
+  } 
+});
 
+LiftInput.addEventListener("input", () => {
+  if (LiftInput.value === "") {
+    document.getElementById("submit-btn").setAttribute("disabled", true);
+  } 
+});
 
+// if(floorInput.value == ''){
+
+//       document.getElementById('submit-btn').setAttribute('disabled' , true);
+// }else {
+
+//   document.getElementById('submit-btn').removeAttribute('disabled');
+// }
 
 //on Submit button add values
 submitButton.addEventListener("click", () => {
-
-
- 
-
-
   // Check if lift should not be greater than 4
   if (LiftInput.value > 3 && floorInput.value > 15) {
     alert("Max Limit");
     LiftInput.value = "";
     floorInput.value = "";
-
   }
 
   // for loop to generate the floors
