@@ -1,89 +1,75 @@
-
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #000;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #000;
 }
 
-
 .topic {
-
-    margin: 0;
-    text-align: center;
-    color : #FF6263;
-    margin-bottom: 0.7em;
+  margin: 0;
+  text-align: center;
+  color: #ff6263;
+  margin-bottom: 0.7em;
 }
 
 .input__container {
-
-     display: flex;
-     flex-direction: column;
-     margin: 0 auto;
-     justify-content: center;
-     align-items: center;
-     border: 0.5px solid #FF6263;
-     width: 20rem;
-     height: auto;
-     padding: 1em;
-     border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid #ff6263;
+  width: 20rem;
+  height: auto;
+  padding: 1em;
+  border-radius: 6px;
 }
 
 #submit-btn {
-
-     border-radius: 6px;
-     padding: 0.75em 1em;
-     color: #fff;
-     background-color: #FF6263;
-     cursor: pointer;
-     width: 100%;
-} 
+  border-radius: 6px;
+  padding: 0.75em 1em;
+  color: #fff;
+  background-color: #ff6263;
+  cursor: pointer;
+  width: 100%;
+}
 
 input {
-
-   width: 100%;
-   padding: 0.5em;
-   border: 0.5px solid #FF6263;
-   outline: none;
-   margin: 0.5em;
-   color: #fff;
-   border-radius: 4px;
+  width: 100%;
+  padding: 0.5em;
+  border: 0.5px solid #ff6263;
+  outline: none;
+  margin: 0.5em;
+  color: #fff;
+  border-radius: 4px;
 }
- 
-#container {
 
-      padding: 2.5em;
-      /* margin-top: 2em; */
-      
-   
+#container {
+  padding: 2.5em;
+  /* margin-top: 2em; */
 }
 
 .up-down {
-
-    color : #fff;
-    background: #FF6263;
-    border: none;
-    outline: none;
-    padding: 0.5em;
-    cursor: pointer;
-    border-radius: 4px;
-    margin: 0.2em;
+  color: #fff;
+  background: #ff6263;
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0.2em;
 }
 .floor {
-
-      
-      width: 100%;
-      display: flex;
-      height: 30vh;
-      flex-direction: column;
-      /* margin-bottom: 1em; */
-      justify-content: space-between;
-      border: 1px solid #FF6263;
+  width: 100%;
+  display: flex;
+  height: 30vh;
+  flex-direction: column;
+  /* margin-bottom: 1em; */
+  justify-content: space-between;
+  border: 1px solid #ff6263;
 }
 
 .btn-div {
-
   /* display : flex;
   border: 1px solid red; */
   /* flex-direction: column;
@@ -92,71 +78,76 @@ input {
 }
 
 .lift-div {
-    width: 150px;
+  /* width: 150px;
     height: 150px;
     margin-left: 2em;
     border: 0.5px solid red;
     z-index: 1;
-    background-color: white;
-    display: flex;
-    
-   
+    background-color: white; */
+  background-color: #fff;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  margin-left: 2em;
+  border: 0.5px solid red;
 }
 
 .lift {
-
   display: flex;
   margin-left: 6em;
-  
-
 }
 
 .left-door {
-
-  background: #FF6263;
+  /* background: #ff6263;
   width: 50%;
   height: 100%;
-  border: 0.5px solid #fff;
-  transition: transform 2s linear;
-  z-index: 2;
-
-}
-
-.left-open {
-  transform: translateX(-20%);
-}
-
-.right-open {
-  transform: translateX(20%);
+  border: 0.5px solid #fff; */
+  background-color: #ff6263;
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:150px;
+  height:150px;
+  transform-origin: left;
+  transition: all 0.5s ease-in-out;
+  border: .5px solid #fff;
 }
 
 .right-door {
-
-    background: #FF6263;
-    border: 0.5px solid #fff;
-    width: 50%;
-    height: 100%;
-    transition: transform 2s linear;
-    z-index: 2;
-  
-
+  background-color: #ff6263;
+  position:absolute;
+  border: .5px solid #fff;
+  top:0px;
+  left:0px;
+  width:150px;
+  height:150px;
+  transform-origin: left;
+  transition: all 0.5s ease-in-out;
 }
 
-@media (max-width : 400px) {
+.left-open {
+  
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+}
+
+.right-open {
+  
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+}
 
 
+
+@media (max-width: 400px) {
   .input__container {
-
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    border: 0.5px solid #FF6263;
+    border: 0.5px solid #ff6263;
     width: 15rem;
     height: auto;
     padding: 0.75em;
-    
-}
-  
+  }
 }

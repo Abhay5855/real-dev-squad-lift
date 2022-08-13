@@ -146,12 +146,12 @@ function MoveLift(clickedFloor, move) {
    setTimeout(() => {
     move.children[0].classList.add("left-open"); 
     move.children[1].classList.add("right-open");
-  }, timing * 1000);
+  }, timing * 1000 + 1000);
 
   setTimeout(() => {
     move.children[0].classList.remove("left-open");
     move.children[1].classList.remove("right-open");
-  }, timing * 1000 + 3000);
+  }, timing * 1000 + 4000);
 
   //  Remove the bust status 
   setTimeout(() => {
