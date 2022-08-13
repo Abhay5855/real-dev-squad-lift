@@ -5,15 +5,23 @@ const submitButton = document.getElementById("submit-btn");
 const container = document.getElementById("container");
 const liftContainer = document.createElement("div");
 
+
+
+
 //on Submit button add values
 submitButton.addEventListener("click", () => {
-  console.log("click");
+
+
+ 
+
 
   // Check if lift should not be greater than 4
-  if (LiftInput.value > 4) {
-    alert("Max lift exceeded");
-  }
+  if (LiftInput.value > 3 && floorInput.value > 15) {
+    alert("Max Limit");
+    LiftInput.value = "";
+    floorInput.value = "";
 
+  }
 
   // for loop to generate the floors
   for (let i = floorInput.value; i > 0; i--) {
@@ -21,10 +29,9 @@ submitButton.addEventListener("click", () => {
     createFloors(i, LiftInput.value);
   }
 
-
   //remove the values after submitting
-  LiftInput.value = '';
-  floorInput.value = '';
+  LiftInput.value = "";
+  floorInput.value = "";
 });
 
 // Function To Create Floors
@@ -56,9 +63,15 @@ function createFloors(floors, lifts) {
   buttonContainer.append(UpButton);
   buttonContainer.append(DownButton);
 
+  let floorNumber = document.createElement("p");
+
+  floorNumber.innerText = `Floor No ${floors}`;
+
+  buttonContainer.append(floorNumber);
+
   floorContainer.append(buttonContainer);
 
-  //   console.log(floorContainer, 'floors')
+  console.log(floorContainer, "floors");
 
   container.append(floorContainer);
 
@@ -141,19 +154,18 @@ function MoveLift(clickedFloor, move) {
   move.classList.add("engaged");
   move.dataset.currentlocation = clickedFloor;
 
-  
-   //Opening the lift doors
-   setTimeout(() => {
-    move.children[0].classList.add("left-open"); 
-    move.children[1].classList.add("right-open");
+  //Opening the lift doors
+  setTimeout(() => {
+    move.children[0].style.transform = "translateX(-25%)";
+    move.children[1].style.transform = "translateX(25%)";
   }, timing * 1000 + 1000);
 
   setTimeout(() => {
-    move.children[0].classList.remove("left-open");
-    move.children[1].classList.remove("right-open");
+    move.children[0].style.transform = "none";
+    move.children[1].style.transform = "none";
   }, timing * 1000 + 4000);
 
-  //  Remove the bust status 
+  //  Remove the bust status
   setTimeout(() => {
     move.classList.remove("engaged");
   }, timing * 1000 + 5000);
