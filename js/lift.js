@@ -18,6 +18,7 @@ document.getElementById("lift-input").addEventListener("input", (e) => {
   updateDisabled();
 });
 
+// Disable function for submit
 function updateDisabled() {
   if (liftVal.length === 0 || floorVal.length === 0) {
     submitButton.setAttribute("disabled", true);
@@ -113,13 +114,10 @@ function createFloors(floors, lifts) {
 
       liftContainer.classList.add("lift");
 
-      // buttonContainer.append(liftContainer);
-
       Lifts.setAttribute("pos", j);
 
       Lifts.setAttribute("onFloor", 0);
 
-      // container.append(liftContainer);
 
       floorContainer.append(liftContainer);
 
@@ -162,6 +160,9 @@ function MoveLift(clickedFloor, move) {
 
   const timing = Math.abs(clickedFloor - currentLocation) * 2;
 
+
+  console.log(timing,'this is time');
+
   let LiftMove = (clickedFloor - 1) * -232;
   move.style.transition = `transform ${timing}s linear`;
   move.style.transform = "translateY(" + LiftMove + "px)";
@@ -170,16 +171,16 @@ function MoveLift(clickedFloor, move) {
 
   //Opening the lift doors
   setTimeout(() => {
-    move.children[0].style.transform = "translateX(-25%)";
-    move.children[1].style.transform = "translateX(25%)";
-  }, timing * 1000 + 1000);
+    move.children[0].style.transform = "translateX(-100%)";
+    move.children[1].style.transform = "translateX(100%)";
+  }, timing * 1000);
 
   setTimeout(() => {
     move.children[0].style.transform = "none";
     move.children[1].style.transform = "none";
-  }, timing * 1000 + 4000);
+  }, timing * 1000 + 3000);
 
-  //  Remove the bust status
+  //  Remove the busy status
   setTimeout(() => {
     move.classList.remove("engaged");
   }, timing * 1000 + 5000);
