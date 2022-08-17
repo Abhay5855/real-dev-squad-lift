@@ -32,11 +32,14 @@
   background-color: #ff6263;
   cursor: pointer;
   width: 100%;
+  border: none;
+  outline: none;
 }
 
 #submit-btn:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+
 }
 
 input {
