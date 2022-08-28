@@ -1,4 +1,3 @@
-
 const floorInput = document.getElementById("floor-input");
 const LiftInput = document.getElementById("lift-input");
 const submitButton = document.getElementById("submit-btn");
@@ -26,7 +25,6 @@ function updateDisabled() {
     submitButton.removeAttribute("disabled");
   }
 }
-
 
 updateDisabled();
 //on Submit button add values
@@ -60,6 +58,8 @@ function createFloors(floors, lifts) {
   floorContainer.classList.add("floor");
   floorContainer.dataset.floor = floors;
 
+  // floorDiv.innerHTML = `<p class="floorName">Floor ${floors}</p>`;
+
   //  button container
   const buttonContainer = document.createElement("div");
   buttonContainer.classList.add("btn-div");
@@ -82,11 +82,13 @@ function createFloors(floors, lifts) {
   buttonContainer.append(UpButton);
   buttonContainer.append(DownButton);
 
-  // let floorNumber = document.createElement("p");
+  let floorNumber = document.createElement("p");
 
-  // floorNumber.innerText = `Floor No ${floors}`;
+  floorNumber.classList.add('floorName');
 
-  // buttonContainer.append(floorNumber);
+  floorNumber.innerText = `Floor No ${floors}`;
+
+  buttonContainer.append(floorNumber);
 
   floorContainer.append(buttonContainer);
 
