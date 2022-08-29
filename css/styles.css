@@ -5,6 +5,16 @@
   background-color: #000;
 }
 
+body {
+  max-height: 100%;
+  overflow-y: hidden;
+}
+
+h2 {
+  color: #ff6263;
+  padding-top: 0.5em;
+}
+
 .topic {
   margin: 0;
   text-align: center;
@@ -22,7 +32,7 @@
   width: 20rem;
   height: auto;
   padding: 1em;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 #submit-btn {
@@ -39,7 +49,6 @@
 #submit-btn:disabled {
   cursor: not-allowed;
   opacity: 0.5;
-
 }
 
 input {
@@ -72,23 +81,21 @@ p {
   margin: 0.2em;
 }
 
-
 .floordiv {
-
-    display : flex;
+  display: flex;
 }
 
 .floor {
   width: 100%;
   display: flex;
-  height: 160px;
+  height: 100px;
   border-bottom: 1px solid #ff6263;
   position: relative;
 }
 
 .lift-div {
   width: 90px;
-  height: 160px;
+  height: 100px;
   margin-left: 1em;
   border: 0.5px solid red;
   z-index: 1;
@@ -99,8 +106,7 @@ p {
 
 .lift {
   display: flex;
-  gap: 1em;
- 
+  margin-left: 1em;
 }
 
 .left-door {
@@ -122,55 +128,144 @@ p {
 }
 
 .btn-div {
-
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
-   margin-right: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 1em;
 }
 
-
-
-
-/* .floorName {
-
-  position: absolute;
-  right: 44px;
-  bottom: 0;
-  color: #fff;
-} */
-
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .input__container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    border: 0.5px solid #ff6263;
     width: 15rem;
-    height: auto;
     padding: 0.75em;
+  }
+
+  #container {
+    padding: 0.5em;
+  }
+
+  .btn-div {
+    margin-right: 0.5em;
+  }
+
+  .up-down {
+    padding: 0.2em;
+    margin: 0.1em;
+  }
+
+  .lift {
+    display: flex;
+    margin-left: 0.5em;
   }
 
   .floor {
     width: 100%;
     display: flex;
-    height: 70px;
+    height: 100px;
     border-bottom: 1px solid #ff6263;
-   
+    position: relative;
   }
 
-  
   .lift-div {
-    width: 50px;
-    height: 70px;
-    margin-left: 1em;
+    width: 60px;
+    height: 100px;
+    margin-left: 0.7em;
     border: 0.5px solid red;
     z-index: 1;
     background-color: white;
     display: flex;
     overflow: hidden;
   }
-  
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* CSS */
+  .input__container {
+    width: 25rem;
+    padding: 0.75em;
+  }
+
+  #container {
+    padding: 1.5em;
+  }
+
+  .btn-div {
+    margin-right: 1.75em;
+  }
+
+  .up-down {
+    padding: 0.5em;
+    margin: 0.1em;
+  }
+
+  .lift {
+    display: flex;
+    /* margin-left: 0.5em; */
+  }
+
+  .floor {
+    width: 100%;
+    display: flex;
+    height: 100px;
+    border-bottom: 1px solid #ff6263;
+    position: relative;
+  }
+
+  .lift-div {
+    width: 80x;
+    height: 100px;
+    margin-left: 2em;
+    border: 0.5px solid red;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    overflow: hidden;
+  }
+}
+
+/* media query for larger screens */
+
+@media (min-width: 1025px) and (max-width: 1500px) {
+  /* CSS */
+  .input__container {
+    width: 25rem;
+    padding: 0.75em;
+  }
+
+  #container {
+    padding: 2em;
+  }
+
+  .btn-div {
+    margin-right: 2em;
+  }
+
+  .up-down {
+    padding: 0.5em;
+    margin: 0.1em;
+  }
+
+  .lift {
+    display: flex;
+    /* margin-left: 0.5em; */
+  }
+
+  .floor {
+    width: 100%;
+    display: flex;
+    height: 100px;
+    border-bottom: 1px solid #ff6263;
+    position: relative;
+  }
+
+  .lift-div {
+    width: 90x;
+    height: 100px;
+    margin-left: 2.5em;
+    border: 0.5px solid red;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    overflow: hidden;
+  }
 }

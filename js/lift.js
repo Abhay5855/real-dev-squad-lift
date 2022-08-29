@@ -7,6 +7,10 @@ const liftContainer = document.createElement("div");
 let floorVal = "";
 let liftVal = "";
 var prevFloor = 0;
+let stop = false;
+
+let targetFloors = [];
+
 document.getElementById("floor-input").addEventListener("input", (e) => {
   floorVal = e.target.value;
   updateDisabled();
@@ -30,8 +34,14 @@ updateDisabled();
 //on Submit button add values
 submitButton.addEventListener("click", () => {
   // Check if lift should not be greater than 4
-  if (LiftInput.value > 3 && floorInput.value > 15) {
-    alert("Max Limit");
+  if (LiftInput.value > 4) {
+    alert("Maximum no of lifts exceeded!");
+    LiftInput.value = "";
+    floorInput.value = "";
+  }
+
+  if (floorInput.value > 15) {
+    alert("Maximum no of floors exceeded!");
     LiftInput.value = "";
     floorInput.value = "";
   }
@@ -45,7 +55,12 @@ submitButton.addEventListener("click", () => {
   //remove the values after submitting
   LiftInput.value = "";
   floorInput.value = "";
+
+  //set the stopper
+  stop = true;
 });
+
+console.log(stop);
 
 // Function To Create Floors
 
@@ -84,9 +99,9 @@ function createFloors(floors, lifts) {
 
   let floorNumber = document.createElement("p");
 
-  floorNumber.classList.add('floorName');
+  floorNumber.classList.add("floorName");
 
-  floorNumber.innerText = `Floor No ${floors}`;
+  floorNumber.innerText = `No ${floors}`;
 
   buttonContainer.append(floorNumber);
 
@@ -104,6 +119,8 @@ function createFloors(floors, lifts) {
       let Lifts = document.createElement("div");
 
       Lifts.classList.add("lift-div");
+
+      Lifts.setAttribute("onfloor", 0);
 
       Lifts.dataset.currentLocation = prevFloor;
 
@@ -146,55 +163,80 @@ document.addEventListener("click", (e) => {
 });
 
 function LiftStatus(clickedFloor) {
-  let LiftArr = Array.from(document.getElementsByClassName("lift-div"));
 
-  for (let i = 0; i < LiftArr.length; i++) {
-    if (!LiftArr[i].classList.contains("engaged")) {
-      MoveLift(clickedFloor, LiftArr[i]);
+  const lifts = document.querySelectorAll(".lift-div");
 
-      return;
+  let pos;
+
+  for (let i = 0; i < lifts.length; i++) {
+    if (lifts[i].classList.contains("engaged")) {
+      let onFloorVal = parseInt(lifts[i].getAttribute("onfloor"));
+
+      if (onFloorVal === clickedFloor) {
+        return;
+      }
+
+      console.log("check next");
+    } else {
+      for (let i = 0; i < lifts.length; i++) {
+        let onFloorVal = parseInt(lifts[i].getAttribute("onfloor"));
+
+        if (onFloorVal === clickedFloor) {
+          MoveLift(clickedFloor, i);
+          return;
+        }
+      }
+
+      pos = i;
+      MoveLift(clickedFloor, pos);
+      break;
     }
+  }
+
+  if (pos === undefined) {
+    targetFloors.push(clickedFloor);
   }
 }
 
-function MoveLift(clickedFloor, move) {
-  // First take the current location of the lift;
+function MoveLift(clickedFloor, pos) {
 
-  // const currentLocation = parseInt(move.dataset.currentLocation);
-  const currentFloor = parseInt(clickedFloor);
-  prevFloor = parseInt(move.dataset.currentLocation);
-  var timing = Math.abs(currentFloor - prevFloor) * 2;
+  const elevators = document.getElementsByClassName("lift-div");
 
-  console.log({ currentFloor });
-  console.log({ prevFloor });
+  const elevator = elevators[pos];
 
-  let LiftMove = (clickedFloor - 1) * 160;
-  console.log(timing, "this is the time");
+  let currentFloor = elevator.getAttribute("onfloor");
+  let duration = Math.abs(parseInt(clickedFloor) - parseInt(currentFloor)) * 2;
 
-  move.dataset.currentLocation = clickedFloor;
+  elevator.setAttribute("onfloor", clickedFloor);
 
-  move.style.transform = `translateY(-${LiftMove}px)`;
-  move.style.transitionDuration = `${timing}s`;
-  move.classList.add("engaged");
+  elevator.style.transition = `transform ${duration}s linear`;
+  elevator.style.transform = `translateY(-${
+    100 * parseInt(clickedFloor) - 100
+  }px)`;
+  elevator.classList.add("engaged");
 
-  //function to open the lift doors
-  LiftDoorsOpen(move, timing);
-}
+  // let doors = elevator.children;
 
-function LiftDoorsOpen(move, timing) {
-  //Opening the lift doors
-  setTimeout(() => {
-    move.children[0].style.transform = "translateX(-100%)";
-    move.children[1].style.transform = "translateX(100%)";
-  }, timing * 1000 + 1000);
+  console.log({ clickedFloor: clickedFloor, currentFloor: currentFloor });
+  console.log(pos, "this is pos");
 
   setTimeout(() => {
-    move.children[0].style.transform = "none";
-    move.children[1].style.transform = "none";
-  }, timing * 1000 + 4000);
+    elevator.children[0].style.transform = "translateX(-100%)";
+    elevator.children[1].style.transform = "translateX(100%)";
+  }, duration * 1000 + 1000);
+
+  setTimeout(() => {
+    elevator.children[0].style.transform = "none";
+    elevator.children[1].style.transform = "none";
+  }, duration * 1000 + 4000);
 
   //  Remove the busy status
   setTimeout(() => {
-    move.classList.remove("engaged");
-  }, timing * 1000 + 6000);
+    elevator.classList.remove("engaged");
+
+    if (targetFloors.length) {
+      MoveLift(targetFloors.shift(), pos);
+    }
+  }, duration * 1000 + 6000);
 }
+
