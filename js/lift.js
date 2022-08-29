@@ -35,13 +35,19 @@ updateDisabled();
 submitButton.addEventListener("click", () => {
   // Check if lift should not be greater than 4
   if (LiftInput.value > 4) {
-    alert("Maximum no of lifts exceeded!");
+    alert("Maximum 4 lifts are allowed!");
     LiftInput.value = "";
     floorInput.value = "";
   }
 
   if (floorInput.value > 15) {
-    alert("Maximum no of floors exceeded!");
+    alert("Maximum no of floors is 15!");
+    LiftInput.value = "";
+    floorInput.value = "";
+  }
+
+  if (LiftInput.value < 0 || floorInput.value < 0) {
+    alert("No negative values are allowed");
     LiftInput.value = "";
     floorInput.value = "";
   }
@@ -163,7 +169,6 @@ document.addEventListener("click", (e) => {
 });
 
 function LiftStatus(clickedFloor) {
-
   const lifts = document.querySelectorAll(".lift-div");
 
   let pos;
@@ -199,7 +204,6 @@ function LiftStatus(clickedFloor) {
 }
 
 function MoveLift(clickedFloor, pos) {
-
   const elevators = document.getElementsByClassName("lift-div");
 
   const elevator = elevators[pos];
@@ -228,7 +232,7 @@ function MoveLift(clickedFloor, pos) {
   setTimeout(() => {
     elevator.children[0].style.transform = "none";
     elevator.children[1].style.transform = "none";
-  }, duration * 1000 + 4000);
+  }, duration * 1000 + 2000);
 
   //  Remove the busy status
   setTimeout(() => {
@@ -237,6 +241,5 @@ function MoveLift(clickedFloor, pos) {
     if (targetFloors.length) {
       MoveLift(targetFloors.shift(), pos);
     }
-  }, duration * 1000 + 6000);
+  }, duration * 1000 + 2000);
 }
-
