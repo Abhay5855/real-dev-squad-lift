@@ -225,8 +225,8 @@ function MoveLift(clickedFloor, pos) {
   console.log(pos, "this is pos");
 
   setTimeout(() => {
-    elevator.children[0].style.transform = "translateX(-30px)";
-    elevator.children[1].style.transform = "translateX(30px)";
+    elevator.children[0].style.transform = "translateX(-100%)";
+    elevator.children[1].style.transform = "translateX(100%)";
   }, duration * 1000 + 1000);
 
   setTimeout(() => {
