@@ -32,9 +32,11 @@ https://lift-simulation-real-dev-squad.netlify.app/
 Language : vanilla javascript, CSS3, HTML5.
 
 
-## Output
+## UML Diagram
 
-<img src='https://paste.pics/0cd6fbd0f4843b75342325a6e94740b6' alt='img'>
+<h3>Activity Diagram</h3>
+
+<img src='https://iili.io/48VDIR.png' alt='img'>
 
 ## Setup
 Step 1 : If you have git installed you can just clone or download the zip folder.
