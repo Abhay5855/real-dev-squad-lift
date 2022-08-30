@@ -8,63 +8,66 @@ let floorVal = "";
 let liftVal = "";
 var prevFloor = 0;
 
-
 let targetFloors = [];
 
-document.getElementById("floor-input").addEventListener("input", (e) => {
-  floorVal = e.target.value;
-  updateDisabled();
-});
+// document.getElementById("floor-input").addEventListener("input", (e) => {
+//   floorVal = e.target.value;
+//   updateDisabled();
+// });
 
-document.getElementById("lift-input").addEventListener("input", (e) => {
-  liftVal = e.target.value;
-  updateDisabled();
-});
+// document.getElementById("lift-input").addEventListener("input", (e) => {
+//   liftVal = e.target.value;
+//   updateDisabled();
+// });
 
 // Disable function for submit
-function updateDisabled() {
-  if (liftVal.length === 0 || floorVal.length === 0) {
-    submitButton.setAttribute("disabled", true);
-  } else {
-    submitButton.removeAttribute("disabled");
-  }
-}
+// function updateDisabled() {
+//   if (liftVal.length === 0 || floorVal.length === 0) {
+//     submitButton.setAttribute("disabled", true);
+//   } else {
+//     submitButton.removeAttribute("disabled");
+//   }
+// }
 
-updateDisabled();
+// updateDisabled();
 //on Submit button add values
 submitButton.addEventListener("click", () => {
-  // Check if lift should not be greater than 4
-  if (LiftInput.value > 4) {
+  container.innerHTML = " ";
+  liftContainer.innerHTML = "";
+
+  if (!LiftInput.value && !floorInput.value) {
+    alert("Please Enter number to generate Floors and Lifts");
+  } else if (!floorInput.value) {
+    alert("Please enter floor number in range 1-15");
+  } else if (!LiftInput.value) {
+    alert("Please enter lift number in range 1-4");
+  } else if (LiftInput.value > 4) {
     alert("Maximum 4 lifts are allowed!");
     LiftInput.value = "";
     floorInput.value = "";
-  }
-
-  if (floorInput.value > 15) {
+  } else if (floorInput.value > 15) {
     alert("Maximum no of floors is 15!");
     LiftInput.value = "";
     floorInput.value = "";
-  }
-
-  if (LiftInput.value < 0 || floorInput.value < 0) {
+  } else if (LiftInput.value < 0 || floorInput.value < 0) {
     alert("No negative values are allowed");
     LiftInput.value = "";
     floorInput.value = "";
+  } else {
+    for (let i = floorInput.value; i > 0; i--) {
+      //Function to genereate floors
+      createFloors(i, LiftInput.value);
+    }
   }
 
+  // Check if lift should not be greater than 4
+
   // for loop to generate the floors
-  for (let i = floorInput.value; i > 0; i--) {
-    //Function to genereate floors
-    createFloors(i, LiftInput.value);
-  }
 
   //remove the values after submitting
   LiftInput.value = "";
   floorInput.value = "";
-
 });
-
-
 
 // Function To Create Floors
 
@@ -76,7 +79,6 @@ function createFloors(floors, lifts) {
   const floorContainer = document.createElement("div");
   floorContainer.classList.add("floor");
   floorContainer.dataset.floor = floors;
-
 
   //  button container
   const buttonContainer = document.createElement("div");
@@ -143,8 +145,6 @@ function createFloors(floors, lifts) {
       floorContainer.append(liftContainer);
 
       floorDiv.append(floorContainer);
-
-     
     }
   }
 }
@@ -214,8 +214,6 @@ function MoveLift(clickedFloor, pos) {
     100 * parseInt(clickedFloor) - 100
   }px)`;
   elevator.classList.add("engaged");
-
-
 
   setTimeout(() => {
     elevator.children[0].style.transform = "translateX(-100%)";
