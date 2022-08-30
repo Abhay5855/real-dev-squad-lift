@@ -34,7 +34,7 @@ Language : vanilla javascript, CSS3, HTML5.
 
 ## Output
 
-- [Activity Diagram](file:///C:/Users/ap391/Downloads/lift-simulation-diagram.webp)
+<img src='https://paste.pics/0cd6fbd0f4843b75342325a6e94740b6' alt='img'>
 
 ## Setup
 Step 1 : If you have git installed you can just clone or download the zip folder.
