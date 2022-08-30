@@ -7,7 +7,7 @@ const liftContainer = document.createElement("div");
 let floorVal = "";
 let liftVal = "";
 var prevFloor = 0;
-let stop = false;
+
 
 let targetFloors = [];
 
@@ -62,11 +62,9 @@ submitButton.addEventListener("click", () => {
   LiftInput.value = "";
   floorInput.value = "";
 
-  //set the stopper
-  stop = true;
 });
 
-console.log(stop);
+
 
 // Function To Create Floors
 
@@ -79,7 +77,6 @@ function createFloors(floors, lifts) {
   floorContainer.classList.add("floor");
   floorContainer.dataset.floor = floors;
 
-  // floorDiv.innerHTML = `<p class="floorName">Floor ${floors}</p>`;
 
   //  button container
   const buttonContainer = document.createElement("div");
@@ -143,19 +140,18 @@ function createFloors(floors, lifts) {
 
       liftContainer.classList.add("lift");
 
-      // buttonContainer.append(liftContainer);
-
       floorContainer.append(liftContainer);
 
       floorDiv.append(floorContainer);
 
-      console.log(container);
+     
     }
   }
 }
 
 let x = 0;
 
+// Up down button getting clicked
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("up-down")) {
     if (e.target.dataset.floor === x) {
@@ -219,10 +215,7 @@ function MoveLift(clickedFloor, pos) {
   }px)`;
   elevator.classList.add("engaged");
 
-  // let doors = elevator.children;
 
-  console.log({ clickedFloor: clickedFloor, currentFloor: currentFloor });
-  console.log(pos, "this is pos");
 
   setTimeout(() => {
     elevator.children[0].style.transform = "translateX(-100%)";
@@ -241,5 +234,5 @@ function MoveLift(clickedFloor, pos) {
     if (targetFloors.length) {
       MoveLift(targetFloors.shift(), pos);
     }
-  }, duration * 1000 + 6000);
+  }, duration * 1000 + 7000);
 }
