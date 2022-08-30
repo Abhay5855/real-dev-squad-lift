@@ -32,8 +32,7 @@ let targetFloors = [];
 // updateDisabled();
 //on Submit button add values
 submitButton.addEventListener("click", () => {
-  container.innerHTML = " ";
-  liftContainer.innerHTML = "";
+
 
   if (!LiftInput.value && !floorInput.value) {
     alert("Please Enter number to generate Floors and Lifts");
@@ -43,30 +42,29 @@ submitButton.addEventListener("click", () => {
     alert("Please enter lift number in range 1-4");
   } else if (LiftInput.value > 4) {
     alert("Maximum 4 lifts are allowed!");
-    LiftInput.value = "";
-    floorInput.value = "";
+  
   } else if (floorInput.value > 15) {
     alert("Maximum no of floors is 15!");
-    LiftInput.value = "";
-    floorInput.value = "";
+   
   } else if (LiftInput.value < 0 || floorInput.value < 0) {
     alert("No negative values are allowed");
-    LiftInput.value = "";
-    floorInput.value = "";
+  
   } else {
+    container.innerHTML = " ";
+    liftContainer.innerHTML = "";
     for (let i = floorInput.value; i > 0; i--) {
       //Function to genereate floors
       createFloors(i, LiftInput.value);
     }
-  }
-
-  // Check if lift should not be greater than 4
-
-  // for loop to generate the floors
 
   //remove the values after submitting
   LiftInput.value = "";
   floorInput.value = "";
+  }
+
+ 
+
+ 
 });
 
 // Function To Create Floors
