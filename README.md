@@ -30,6 +30,8 @@ https://lift-simulation-real-dev-squad.netlify.app/
 ## Tech Stack
 
 Language : vanilla javascript, CSS3, HTML5.
+Deployment : Netlify
+Version Control : Git and Github.
 
 
 ## UML Diagram
