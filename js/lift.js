@@ -126,7 +126,7 @@ function createFloors(floors, lifts) {
 
       Lifts.classList.add("lift-div");
 
-      Lifts.setAttribute("onfloor", 0);
+      Lifts.setAttribute("onfloor", 1);
 
       Lifts.dataset.currentLocation = prevFloor;
 
@@ -225,14 +225,14 @@ function MoveLift(clickedFloor, pos) {
   console.log(pos, "this is pos");
 
   setTimeout(() => {
-    elevator.children[0].style.transform = "translateX(-100%)";
-    elevator.children[1].style.transform = "translateX(100%)";
+    elevator.children[0].style.transform = "translateX(-30px)";
+    elevator.children[1].style.transform = "translateX(30px)";
   }, duration * 1000 + 1000);
 
   setTimeout(() => {
     elevator.children[0].style.transform = "none";
     elevator.children[1].style.transform = "none";
-  }, duration * 1000 + 2000);
+  }, duration * 1000 + 4000);
 
   //  Remove the busy status
   setTimeout(() => {
@@ -241,5 +241,5 @@ function MoveLift(clickedFloor, pos) {
     if (targetFloors.length) {
       MoveLift(targetFloors.shift(), pos);
     }
-  }, duration * 1000 + 2000);
+  }, duration * 1000 + 6000);
 }
