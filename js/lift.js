@@ -43,7 +43,15 @@ submitButton.addEventListener("click", () => {
   } else if (LiftInput.value > 4) {
     alert("Maximum 4 lifts are allowed!");
   
-  } else if (floorInput.value > 15) {
+  }
+
+  else if (LiftInput.value == 0 || floorInput.value == 0){
+
+        alert('Value cannot be zero');
+  }
+  
+  
+  else if (floorInput.value > 15) {
     alert("Maximum no of floors is 15!");
    
   } else if (LiftInput.value < 0 || floorInput.value < 0) {
